@@ -3,9 +3,21 @@
 // Execute `rustlings hint iterators4` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
-pub fn factorial(num: u64) -> u64 {
+use std::convert::TryInto;
+
+pub fn factorial(mut num: u64) -> u64 {
+    match num {
+        0 => 1,
+        1 => 1,
+        _ => {
+             (1..num).map(|x| {
+                num *= x;
+                println!("Num {}, X {}", num, x);
+                num
+            }).collect::<Vec<u64>>().into_iter().rev().collect::<Vec<u64>>()[0]
+        }
+    }
     // Complete this function to return the factorial of num
     // Do not use:
     // - return
